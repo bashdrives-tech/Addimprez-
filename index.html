@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addimprez | craft the dream...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Premium Palette */
+        :root {
+            --dark-canvas: #0a0a0a; 
+            --light-canvas: #fafafa; 
+            --indigo-accent: #2e3b8a; 
+            --gold-accent: #c5a059; 
+            --text-dark: #121212;
+            --text-light: #f5f5f5;
+            --gray-medium: #888;
+            --gray-subtle: #d0d0d0;
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset & Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 100px; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-canvas); color: var(--text-light); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+        a { text-decoration: none; transition: var(--transition-smooth); color: inherit; cursor: pointer; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--text-light); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: var(--gold-accent); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #fff; }
+
+        /* Minimalist Fixed Header */
+        header { background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); color: var(--text-light); padding: 1.2rem 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 1000; transition: var(--transition-smooth); }
+        header.scrolled { padding: 0.8rem 8%; border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .logo { display: flex; flex-direction: column; }
+        header h1 { font-size: 2.2rem; letter-spacing: -0.5px; margin-bottom: -5px; }
+        header p { font-size: 0.9rem; color: var(--gray-medium); font-style: italic; }
+        nav ul { display: flex; gap: 2.5rem; align-items: center; }
+        nav a { font-size: 0.95rem; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); }
+        nav a:hover { color: var(--gold-accent); }
+        .nav-enquire-btn { border: 1px solid var(--gold-accent); color: var(--gold-accent); padding: 0.8rem 1.8rem; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 2px; }
+        .nav-enquire-btn:hover { background: var(--gold-accent); color: #000; border-color: var(--gold-accent); }
+
+        /* Premium Buttons */
+        .premium-btn { display: inline-block; padding: 1.2rem 3rem; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-radius: 2px; transition: var(--transition-smooth); cursor: pointer; border: 1px solid transparent; }
+        .premium-btn-solid { background: var(--gold-accent); color: #000; }
+        .premium-btn-solid:hover { background: #fff; color: #000; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .premium-btn-ghost { background: transparent; color: var(--text-light); border: 1px solid var(--gray-medium); }
+        .premium-btn-ghost:hover { border-color: var(--gold-accent); color: var(--gold-accent); }
+
+        /* Hero Section */
+        #hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('1000882820.webp') center/cover; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; position: relative; }
+        #hero h2 { font-size: 5rem; margin-bottom: 0.5rem; text-transform: capitalize; letter-spacing: -2px; color: #fff; line-height: 1.1; }
+        #hero p { font-size: 1.4rem; font-weight: 300; color: var(--gray-subtle); margin-bottom: 3.5rem; max-width: 850px; font-style: italic; }
+        #hero .cta-container { display: flex; gap: 1.5rem; }
+        #hero::after { content: ''; position: absolute; bottom: 5vh; left: 50%; width: 2px; height: 10vh; background: linear-gradient(to bottom, var(--gold-accent), transparent); animation: scrollDown 2s infinite; }
+
+        /* Statement Section */
+        #manifesto { padding: 8rem 15%; background-color: #000; color: #fff; text-align: center; }
+        #manifesto h3 { font-size: 3rem; color: var(--gold-accent); margin-bottom: 2rem; font-style: italic; }
+        #manifesto p { font-size: 1.3rem; font-weight: 300; line-height: 1.8; color: var(--gray-subtle); }
+
+        /* Services Section */
+        #services { padding: 8rem 8%; background-color: var(--light-canvas); color: var(--text-dark); }
+        #services h3 { font-size: 3.5rem; text-align: center; margin-bottom: 1rem; color: var(--text-dark); }
+        .section-tagline { font-size: 1.1rem; color: var(--gray-medium); text-align: center; margin-bottom: 6rem; max-width: 600px; margin-left: auto; margin-right: auto; text-transform: uppercase; letter-spacing: 2px; }
+        .services-split { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+        .services-text h4 { font-size: 1.6rem; color: var(--indigo-accent); font-weight: 700; margin-bottom: 1.5rem; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1.5px; }
+        .services-list ul { text-align: left; margin-bottom: 3rem; color: var(--text-dark); }
+        .services-list ul li { font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; font-weight: 300; color: #444; border-bottom: 1px solid var(--gray-subtle); padding-bottom: 1rem; }
+        .services-list ul li::before { content: "\2014"; color: var(--gold-accent); font-weight: bold; }
+        .services-image { position: relative; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .services-image img { width: 100%; transition: var(--transition-smooth); }
+        .services-image:hover img { transform: scale(1.03); }
+
+        /* Showcase Gallery Section */
+        #portfolio { padding: 8rem 8%; background-color: var(--dark-canvas); text-align: center; }
+        #portfolio h3 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .gallery-tagline { font-size: 1.1rem; color: var(--gray-medium); text-align: center; margin-bottom: 6rem; max-width: 600px; margin-left: auto; margin-right: auto; text-transform: uppercase; letter-spacing: 2px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); height: 350px; cursor: pointer; transition: var(--transition-smooth); }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease-in-out; }
+        .gallery-item:hover img { transform: scale(1.06); }
+        .item-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: #fff; padding: 2rem; text-align: left; opacity: 0; transition: var(--transition-smooth); }
+        .gallery-item:hover .item-overlay { opacity: 1; }
+        .item-overlay h5 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold-accent); }
+        .item-overlay p { font-size: 1.1rem; color: var(--text-light); font-weight: 300; font-style: italic; }
+
+        /* Contact Section */
+        #contact { padding: 8rem 8%; background-color: var(--text-dark); color: var(--text-light); text-align: center; }
+        #contact h3 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--gold-accent); }
+        .contact-desc { font-size: 1.2rem; font-weight: 300; color: var(--gray-subtle); margin-bottom: 6rem; max-width: 700px; margin-left: auto; margin-right: auto; font-style: italic; }
+        form { max-width: 750px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; }
+        form .full-width { grid-column: 1 / -1; }
+        .input-group { position: relative; }
+        label { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.6rem; }
+        input, select, textarea { width: 100%; padding: 1.2rem; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); border-radius: 2px; font-size: 1rem; color: #fff; font-family: 'Inter', sans-serif; transition: var(--transition-smooth); }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold-accent); background: rgba(255,255,255,0.06); }
+        select { appearance: none; color: #ccc; cursor: pointer; }
+        select option { background: var(--text-dark); color: #fff; }
+        textarea { resize: vertical; grid-column: 1 / -1; }
+        button[type="submit"] { grid-column: 1 / -1; margin-top: 1rem; cursor: pointer; }
+
+        /* Minimalist Footer with Address */
+        footer { background: #000; color: #fff; text-align: center; padding: 5rem 8% 3rem; font-size: 0.9rem; border-top: 1px solid #111; }
+        footer h4 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-light); margin-bottom: 0.5rem; }
+        footer p.tagline { color: var(--gray-medium); font-weight: 300; margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+        .footer-address { font-size: 1rem; color: var(--gray-subtle); line-height: 1.8; margin-bottom: 3rem; font-weight: 300; }
+        .footer-address strong { color: var(--gold-accent); font-weight: 600; letter-spacing: 1px; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+        .footer-copyright { border-top: 1px solid #111; padding-top: 2rem; color: #555; }
+        .footer-copyright span { color: var(--gold-accent); font-weight: bold; }
+
+        /* Animations */
+        @keyframes scrollDown {
+            0% { opacity: 0; transform: translate(-50%, 0); height: 0vh; }
+            50% { opacity: 1; transform: translate(-50%, 0); height: 10vh; }
+            100% { opacity: 0; transform: translate(-50%, 10vh); height: 0vh; }
+        }
+
+        /* Responsiveness */
+        @media (max-width: 1200px) {
+            #hero h2 { font-size: 4rem; }
+            #manifesto { padding: 6rem 10%; }
+            #manifesto p { font-size: 1.2rem; }
+        }
+        @media (max-width: 991px) {
+            #hero h2 { font-size: 3.2rem; }
+            #hero p { font-size: 1.1rem; }
+            .services-split { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+            .services-list ul { text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; }
+            nav ul { display: none; } 
+        }
+        @media (max-width: 768px) {
+            #hero h2 { font-size: 2.8rem; }
+            #services, #portfolio, #contact { padding: 6rem 5%; }
+            form { grid-template-columns: 1fr; }
+            .cta-container { flex-direction: column; gap: 1rem; width: 100%; max-width: 300px; }
+            .premium-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="mainHeader">
+        <div class="logo">
+            <h1>addimprez</h1>
+            <p>create the dreams...</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#services">Capabilities</a></li>
+                <li><a href="#portfolio">Showcase</a></li>
+                <li><a href="#contact">Consult</a></li>
+                <li><a href="#contact" class="nav-enquire-btn">Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h2>Crafting Architectural<br>Identities</h2>
+        <p>Premium LED Signage, Architectural ACP Work, and Comprehensive Spatial Branding. We are a turnkey identity studio for businesses that define standards.</p>
+        <div class="cta-container">
+            <a href="#contact" class="premium-btn premium-btn-solid">Start Consultation</a>
+            <a href="#portfolio" class="premium-btn premium-btn-ghost">View Showcase</a>
+        </div>
+    </section>
+
+    <section id="manifesto">
+        <h3>Create the dreams...</h3>
+        <p>Our work exists at the intersection of architectural precision and strategic identity. We do not just build signs; we fabricate dreams and physical brand experiences. For the clients who understand that identity is an investment, we deliver turnkey solutions with unparalleled craftsmanship.</p>
+    </section>
+
+    <section id="services">
+        <h3>Capabilities</h3>
+        <p class="section-tagline">Turnkey Solutions for High-Impact Visions</p>
+        <div class="services-split">
+            <div class="services-text">
+                <h4>Strategic Identification</h4>
+                <div class="services-list">
+                    <ul>
+                        <li>Premium LED Signage & Glow Boards</li>
+                        <li>Turnkey Architectural ACP Work</li>
+                        <li>Comprehensive Designing & Corporate Branding</li>
+                        <li>High-Resolution UV Print & Large Format Printing</li>
+                        <li>Commercial & Industrial Painting</li>
+                        <li>Glass Frosting & Custom Sticker Decals</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="premium-btn premium-btn-solid">Discuss Your Project</a>
+            </div>
+            <div class="services-image">
+                <img src="1000882819.webp" alt="addimprez premium branding setup">
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h3>Showcase</h3>
+        <p class="gallery-tagline">A Collection of Crafted Realities</p>
+        <div class="gallery-grid">
+            
+            <div class="gallery-item">
+                <img src="1000882779.jpg" alt="Crazo Clothing storefront">
+                <div class="item-overlay"><h5>Crazo</h5><p>Architectural ACP Storefront</p></div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="1000882812.webp" alt="addimprez LED signage">
+                <div class="item-overlay"><h5>addimprez</h5><p>Premium LED Display</p></div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="1000882776.png" alt="iPRO Apple branding">
+                <div class="item-overlay"><h5>iPRO</h5><p>Corporate Tech Branding</p></div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="1000882770.jpg" alt="Waffle Vibes Only sign">
+                <div class="item-overlay"><h5>Waffle Vibes Only</h5><p>Custom Retail Signage</p></div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="1000882788.png" alt="Skybell branding display">
+                <div class="item-overlay"><h5>Skybell</h5><p>Spatial Retail Display</p></div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="1000882778.jpg" alt="Crazo close-up detail">
+                <div class="item-overlay"><h5>Crazo</h5><p>Signage Precision Detail</p></div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="1000882769.jpg" alt="Waffle vibes only side view">
+                <div class="item-overlay"><h5>Waffle Vibes Only</h5><p>Branding Perspective</p></div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="1000882780.jpg" alt="Crazo store front wide view">
+                <div class="item-overlay"><h5>Crazo</h5><p>Complete Shop Fitting</p></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h3>Enquiry</h3>
+        <p class="contact-desc">Discuss your project with our lead identity consultants. Submit your details for a tailored consultation within 24 hours, or visit our studio in R.S. Puram, Coimbatore.</p>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label>FULL NAME</label>
+                <input type="text" name="name" placeholder="Johnathan Doe" required>
+            </div>
+            <div class="input-group">
+                <label>CORPORATE EMAIL</label>
+                <input type="email" name="email" placeholder="john.doe@company.com" required>
+            </div>
+            <div class="input-group full-width">
+                <label>BUSINESS NAME (IF APPLICABLE)</label>
+                <input type="text" name="business_name" placeholder="Company Name Pvt. Ltd.">
+            </div>
+            <div class="input-group full-width">
+                <label>PHONE NUMBER (REQUIRED)</label>
+                <input type="tel" name="phone" placeholder="+91 XXX XXX XXXX" required>
+            </div>
+            <div class="input-group full-width">
+                <label>PROJECT SCOPE</label>
+                <select name="service" required>
+                    <option value="" disabled selected>Select Your Requirements...</option>
+                    <option value="Architectural Signage">Premium Architectural Signage (LED/ACP)</option>
+                    <option value="Branding/Designing">Strategic Corporate Branding & Designing</option>
+                    <option value="Spatial Branding/Painting">Space Branding & Commercial Painting</option>
+                    <option value="Printing/Other">Specialized Printing (UV, Large Format)</option>
+                    <option value="Consultation">General Identity Consultation</option>
+                </select>
+            </div>
+            <div class="input-group full-width">
+                <label>PROJECT DETAILS & VISION</label>
+                <textarea name="details" rows="6" placeholder="Describe your dream or project requirements briefly..."></textarea>
+            </div>
+            <button type="submit" class="premium-btn premium-btn-solid">Request Consultation</button>
+        </form>
+    </section>
+
+    <footer>
+        <h4>addimprez</h4>
+        <p class="tagline">Your Turnkey Partner for<br>Dream Visual Realities</p>
+        
+        <div class="footer-address">
+            <strong>Studio Location</strong>
+            286, Diwan Bahadur Rd, next to Kalpana Studios<br>
+            R.S. Puram, Coimbatore, Tamil Nadu 641001<br>
+            Call: +91 95666 64663
+        </div>
+
+        <div class="footer-copyright">
+            <p>&copy; 2026 <span>addimprez</span>. Precision Fabrication India.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Consultation request submitted. Thank you.');
+        });
+    </script>
+</body>
+</html>
