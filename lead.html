@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addimprez | Complete Branding & Signage Coimbatore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Design Theme Variables */
+        :root {
+            --brand-dark: #0f141c;       /* Deep layout black */
+            --brand-blue: #1a2332;       /* Slate corporate blue */
+            --brand-red: #cc1e1e;        /* High-conversion action red */
+            --brand-red-hover: #b01414;
+            --brand-light: #ffffff;
+            --bg-gray: #f4f6f9;          /* Section contrast background */
+            --text-dark: #1e2530;
+            --text-muted: #657388;
+            --whatsapp-color: #25D366;
+            --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Resets */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 80px; }
+        body { background-color: var(--brand-light); color: var(--text-dark); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
+        ul { list-style: none; }
+        img { width: 100%; display: block; object-fit: cover; border-radius: 4px; }
+
+        /* Fixed Navigation Header */
+        header { background: var(--brand-dark); color: var(--brand-light); padding: 1rem 6%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; width: 100%; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .logo-block { display: flex; flex-direction: column; }
+        .logo-block h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+        .logo-block p { font-size: 0.8rem; color: var(--brand-red); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+        
+        /* Desktop Navigation links */
+        .desktop-links { display: flex; gap: 2rem; align-items: center; margin-right: auto; margin-left: 3rem; }
+        .desktop-links a { font-size: 0.95rem; font-weight: 500; color: #a0aec0; }
+        .desktop-links a:hover { color: var(--brand-light); }
+
+        .nav-buttons { display: flex; gap: 1rem; align-items: center; }
+        .btn-nav { padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px; border: none; cursor: pointer; }
+        .btn-nav-red { background: var(--brand-red); color: var(--brand-light); }
+        .btn-nav-red:hover { background: var(--brand-red-hover); }
+        .btn-nav-wa { background: transparent; color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); }
+        .btn-nav-wa:hover { background: var(--whatsapp-color); color: var(--brand-dark); }
+
+        /* Three-Dot Menu Button (Mobile Exclusive) */
+        .three-dot-menu { display: none; background: transparent; border: none; color: var(--brand-light); font-size: 1.8rem; cursor: pointer; padding: 0 0.5rem; line-height: 1; transition: var(--transition-fast); }
+        .three-dot-menu:hover { color: var(--brand-red); }
+
+        /* Mobile Dropdown Navigation Menu */
+        .mobile-dropdown { display: none; position: absolute; top: 100%; right: 6%; background: var(--brand-blue); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 200px; overflow: hidden; z-index: 999; }
+        .mobile-dropdown.active { display: block; }
+        .mobile-dropdown a { display: block; padding: 1rem 1.5rem; color: var(--brand-light); font-size: 1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .mobile-dropdown a:last-child { border-bottom: none; }
+        .mobile-dropdown a:hover { background: var(--brand-red); }
+
+        /* UI Component Buttons */
+        .cta-btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .btn-main { display: inline-flex; align-items: center; gap: 8px; padding: 0.9rem 2rem; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; border: none; cursor: pointer; transition: var(--transition-fast); }
+        .btn-red { background: var(--brand-red); color: var(--brand-light); }
+        .btn-red:hover { background: var(--brand-red-hover); transform: translateY(-1px); }
+        .btn-white { background: var(--brand-light); color: var(--text-dark); border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .btn-white:hover { background: var(--bg-gray); border-color: #bbb; }
+        
+        /* Glowing Live Pulsing Call Button Component */
+        .btn-glow-call { background: #007bff; color: var(--brand-light); animation: callGlow 2s infinite; }
+        .btn-glow-call:hover { background: #0056b3; animation: none; }
+
+        @keyframes callGlow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(0, 123, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+        }
+
+        /* Hero Context Section */
+        #hero-showcase { background: linear-gradient(rgba(15,20,28,0.85), rgba(15,20,28,0.85)), url('hero.webp') center/cover; height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 8%; text-align: center; color: var(--brand-light); }
+        #hero-showcase h2 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; letter-spacing: -1px; max-width: 900px; margin-bottom: 1.5rem; }
+        #hero-showcase p { font-size: 1.2rem; font-weight: 400; max-width: 700px; margin-bottom: 2.5rem; color: #a0aec0; }
+        #hero-showcase .cta-btn-group { justify-content: center; }
+
+        /* Alternating Feature Content Layout blocks */
+        .content-block-dark { background-color: var(--brand-blue); color: var(--brand-light); padding: 5rem 8%; }
+        .content-block-light { background-color: var(--brand-light); color: var(--text-dark); padding: 5rem 8%; }
+        
+        .layout-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .layout-text h3 { font-size: 2.2rem; font-weight: 800; line-height: 1.3; margin-bottom: 1.2rem; }
+        .layout-text p { font-size: 1.05rem; margin-bottom: 1.5rem; color: opacity 0.9; opacity: 0.9; }
+        .content-block-light .layout-text p { color: #4a5568; }
+        
+        .layout-image { position: relative; border-radius: 6px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); height: 380px; }
+        .layout-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Gallery Filter Navigation styling */
+        .filter-wrapper { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 3.5rem; flex-wrap: wrap; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .filter-btn { background: #fff; color: var(--text-dark); border: 1px solid #ddd; padding: 0.7rem 1.5rem; font-size: 0.9rem; font-weight: 600; border-radius: 30px; cursor: pointer; transition: var(--transition-fast); }
+        .filter-btn:hover { border-color: var(--brand-red); color: var(--brand-red); }
+        .filter-btn.active { background: var(--brand-red); color: #fff; border-color: var(--brand-red); box-shadow: 0 4px 12px rgba(204,30,30,0.25); }
+
+        /* Grid Framework for Display Capabilities */
+        .grid-section { padding: 5rem 8%; background-color: var(--bg-gray); text-align: center; }
+        .grid-header h3 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .grid-header p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; }
+        
+        .capabilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; min-height: 400px; }
+        .cap-card { background: var(--brand-light); border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; transition: var(--transition-fast); display: flex; flex-direction: column; }
+        .cap-card.hide { display: none !important; }
+        .cap-card-img { height: 240px; width: 100%; }
+        .cap-card-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+        .cap-card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .cap-card-body h4 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--brand-blue); }
+        .cap-card-body p { font-size: 0.95rem; color: #4a5568; line-height: 1.5; }
+
+        /* Integrated Structured FAQ Interface */
+        .faq-section { padding: 5rem 8%; background-color: var(--brand-light); text-align: center; }
+        .faq-wrapper { max-width: 800px; margin: 0 auto; text-align: left; }
+        .faq-box { background: var(--bg-gray); padding: 1.5rem 2rem; border-radius: 6px; margin-bottom: 1rem; border-left: 4px solid var(--brand-red); }
+        .faq-question { font-size: 1.2rem; font-weight: 700; color: var(--brand-blue); margin-bottom: 0.5rem; }
+        .faq-answer { font-size: 1rem; color: #4a5568; line-height: 1.6; }
+
+        /* Targeted Local Action / Contact block */
+        .contact-panel { background: var(--brand-dark); color: var(--brand-light); padding: 5rem 8%; text-align: center; border-top: 2px solid #222; }
+        .contact-inside { max-width: 750px; margin: 0 auto; }
+        .contact-inside h3 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--brand-light); }
+        .contact-inside p { font-size: 1.1rem; color: #a0aec0; margin-bottom: 2.5rem; }
+        
+        .studio-address { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; border-radius: 6px; text-align: left; margin-bottom: 2.5rem; }
+        .studio-address h5 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-red); margin-bottom: 0.5rem; font-weight: 700; }
+        .studio-address p { font-size: 1.1rem; color: var(--brand-light); margin-bottom: 0; line-height: 1.6; }
+
+        /* Institutional Footnotes */
+        footer { background: #070a0e; color: #718096; text-align: center; padding: 3rem 8% 2rem; font-size: 0.9rem; border-top: 1px solid #111; }
+        footer h4 { font-size: 1.6rem; color: var(--brand-light); font-weight: 800; margin-bottom: 0.4rem; }
+        footer p { margin-bottom: 1.5rem; }
+        .footer-line { border-top: 1px solid #1a202c; padding-top: 1.5rem; color: #4a5568; }
+        .footer-line span { color: var(--brand-red); font-weight: 600; }
+
+        /* Adaptive Media Rules */
+        @media (max-width: 991px) {
+            #hero-showcase h2 { font-size: 2.8rem; }
+            .layout-container { grid-template-columns: 1fr; gap: 2.5rem; }
+            .layout-image { height: 320px; }
+            .desktop-links { display: none; }
+            .three-dot-menu { display: block; }
+            .filter-wrapper { justify-content: flex-start; overflow-x: auto; padding-bottom: 10px; white-space: nowrap; width: 100%; -webkit-overflow-scrolling: touch; }
+            .filter-btn { display: inline-block; }
+        }
+        @media (max-width: 768px) {
+            header { padding: 1rem 4%; }
+            .logo-block h1 { font-size: 1.6rem; }
+            .nav-buttons { display: none; }
+            #hero-showcase { padding: 0 4%; height: 65vh; }
+            #hero-showcase h2 { font-size: 2.2rem; }
+            .section-padding { padding: 4rem 4%; }
+            .cta-btn-group { flex-direction: column; width: 100%; }
+            .btn-main { width: 100%; justify-content: center; }
+            .capabilities-grid { grid-template-columns: 1fr; }
+            .mobile-dropdown { right: 4%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="mainHeader">
+        <div class="logo-block">
+            <h1>addimprez</h1>
+            <p>create the dreams...</p>
+        </div>
+
+        <div class="desktop-links">
+            <a href="#about">About Us</a>
+            <a href="#portfolio">Gallery</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 1rem;">
+            <ul class="nav-buttons">
+                <li><a href="https://wa.me/919894020156?text=Hi%20Addimprez,%20I%20would%20like%20to%20discuss%20a%20branding/signage%20project." target="_blank" class="btn-nav btn-nav-wa">WhatsApp</a></li>
+                <li><a href="tel:+919894020156" class="btn-nav btn-nav-red">Call Studio</a></li>
+            </ul>
+
+            <button class="three-dot-menu" id="threeDotBtn" aria-label="Navigation Menu">&#8942;</button>
+
+            <div class="mobile-dropdown" id="dropdownMenu">
+                <a href="#about">About Us</a>
+                <a href="#portfolio">Gallery</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero-showcase">
+        <h2>Premier Specialists For Your LED Sign Board & Branding In Coimbatore</h2>
+        <p>Get high-quality structural sign boards and modern printing solutions delivered near you with precision, durability, and competitive local pricing.</p>
+        <div class="cta-btn-group">
+            <a href="tel:+919894020156" class="btn-main btn-glow-call">Call Our Experts &rarr;</a>
+            <a href="#portfolio" class="btn-main btn-white">Browse Our Gallery</a>
+        </div>
+    </section>
+
+    <section id="about" class="content-block-light">
+        <div class="layout-container" style="max-width: 900px; grid-template-columns: 1fr; text-align: center;">
+            <div class="layout-text">
+                <h3 style="font-size: 2.8rem; color: var(--brand-blue); margin-bottom: 1.5rem;">About Addimprez</h3>
+                <p style="font-size: 1.15rem; line-height: 1.8;">We are a dedicated design and fabrication studio based in Coimbatore, specializing in bringing business identities to life. Whether you are a small local shop or a large commercial space, we understand that your storefront is your most important asset and first impression.</p>
+                <p style="font-size: 1.15rem; line-height: 1.8;">Over the years, we have designed, manufactured, and installed a wide variety of visual branding solutions. Our expertise covers everything from highly durable outdoor ACP boards with 3D LED lettering to vertical signs, retail lightboxes, glass frosting, fashion standees, and precision commercial painting. We pride ourselves on using quality materials, delivering clean finishes, and handling complete end-to-end installation seamlessly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="grid-section" id="portfolio">
+        <div class="grid-header">
+            <h3>Our Work Portfolio</h3>
+            <p>Select a category below to instantly filter our field installations.</p>
+        </div>
+
+        <div class="filter-wrapper">
+            <button class="filter-btn active" data-filter="all">All Work</button>
+            <button class="filter-btn" data-filter="led">LED Signage</button>
+            <button class="filter-btn" data-filter="storefront">Store Front</button>
+            <button class="filter-btn" data-filter="awards">Awards</button>
+            <button class="filter-btn" data-filter="standees">Standees</button>
+            <button class="filter-btn" data-filter="graphics">Wall & Glass Graphics</button>
+        </div>
+
+        <div class="capabilities-grid" id="galleryGrid">
+            
+            <div class="cap-card" data-category="led">
+                <div class="cap-card-img"><img src="taj.webp" alt="Luminous Premium Signage"></div>
+                <div class="cap-card-body">
+                    <h4>Premium Luminous Setup</h4>
+                    <p>Polished gold accents fused with direct backlit modular styling for high-visibility storefronts.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="led">
+                <div class="cap-card-img"><img src="shadowgraphy.webp" alt="Backlit LED Lettering"></div>
+                <div class="cap-card-body">
+                    <h4>Halo-Lit 3D Letters</h4>
+                    <p>Modern back-lit custom letters creating crisp illumination profiles for premium dusk visibility.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="led">
+                <div class="cap-card-img"><img src="skybell.png" alt="Vertical Glow Pylon"></div>
+                <div class="cap-card-body">
+                    <h4>Vertical Glow Pylons</h4>
+                    <p>Slim, custom structural signs configured with bright, even internal lighting for maximum presence.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="storefront">
+                <div class="cap-card-img"><img src="crazo.jpg" alt="Commercial Storefront"></div>
+                <div class="cap-card-body">
+                    <h4>Architectural ACP Sheet Work</h4>
+                    <p>High-finish, heavy-duty weather-proof aluminum composite paneling for main storefront structures.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="storefront">
+                <div class="cap-card-img"><img src="ipro.png" alt="Corporate Branding Front"></div>
+                <div class="cap-card-body">
+                    <h4>Corporate Retail Fit-out</h4>
+                    <p>Clean, precision brand panel fabrication built strictly to specifications for modern electronic storefronts.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="storefront">
+                <div class="cap-card-img"><img src="waffle.jpg" alt="Interior Lightbox"></div>
+                <div class="cap-card-body">
+                    <h4>Custom Retail Lightboxes</h4>
+                    <p>Vibrant interior installations tailored to elevate look, feel, and focus inside consumer retail spaces.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="storefront">
+                <div class="cap-card-img"><img src="maple.jpg" alt="Complete Shop Front Branding"></div>
+                <div class="cap-card-body">
+                    <h4>Turnkey Exterior Finishing</h4>
+                    <p>Comprehensive design coordination involving structural paint matching, side fascias, and main logo fittings.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="awards">
+                <div class="cap-card-img"><img src="awards.jpg" alt="Custom Acrylic Awards"></div>
+                <div class="cap-card-body">
+                    <h4>Acrylic & Trophies Work</h4>
+                    <p>Direct flatbed crystal-clear surface print formatting, ideal for business presentations and custom desk plates.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="standees">
+                <div class="cap-card-img"><img src="standees.jpg" alt="Large Format Standee Display"></div>
+                <div class="cap-card-body">
+                    <h4>Large Format Standees</h4>
+                    <p>Heavy-base display setups leveraging crisp, high-resolution color media for indoor showrooms.</p>
+                </div>
+            </div>
+
+            <div class="cap-card" data-category="graphics">
+                <div class="cap-card-img"><img src="hero.webp" alt="Wall Graphics Backdrop"></div>
+                <div class="cap-card-body">
+                    <h4>Premium Matte Backdrops</h4>
+                    <p>Custom structural wood-texture elements mapped cleanly for internal office settings and lobby murals.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <h3 class="section-title text-center" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">Frequently Asked Questions</h3>
+        <p class="section-tagline text-center">Clear answers for your branding and project execution.</p>
+        
+        <div class="faq-wrapper">
+            <div class="faq-box">
+                <div class="faq-question">How long does it take to manufacture and install a signboard?</div>
+                <div class="faq-answer">Depending on the architectural scale and specific material selections, most standard premium LED and ACP signboards take around 3 to 7 working days from final design approval to deployment.</div>
+            </div>
+            
+            <div class="faq-item faq-box">
+                <div class="faq-question">Do you handle the actual site installation?</div>
+                <div class="faq-answer">Yes, we provide completely turnkey execution. Our technical installation team manages the structural mounting, hardware integration, wiring setups, and final architectural finishing directly at your shop front.</div>
+            </div>
+            
+            <div class="faq-item faq-box">
+                <div class="faq-question">Which type of board is best for outdoor sunlight and heavy rain?</div>
+                <div class="faq-answer">We highly recommend Aluminum Composite Panel (ACP) backing elements combined with fully waterproofed outdoor-rated LED modules and acrylic face letters. They are rust-proof, weather-resistant, and retain visual density for years.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-panel">
+        <div class="contact-inside">
+            <h3>Get A Custom Quote Today</h3>
+            <p class="contact-desc">Connect with us directly to discuss dimensions, materials, or custom artwork concepts. We make the estimation simple and transparent.</p>
+            
+            <div class="studio-address">
+                <h5>Studio Location</h5>
+                <p>286, Diwan Bahadur Rd, next to Kalpana Studios, R.S. Puram, Coimbatore, Tamil Nadu 641001</p>
+                <p style="margin-top: 1rem; font-weight: 600; color: var(--brand-light);">Hotline: +91 98940 20156</p>
+            </div>
+            
+            <div class="contact-actions">
+                <a href="tel:+919894020156" class="btn-main btn-glow-call" style="padding: 1.1rem 3rem;">
+                    Call Expert Now
+                </a>
+                <a href="https://wa.me/919894020156?text=Hi%20Addimprez,%20I%20want%20to%20share%20project%20details%20for%20a%20quote." target="_blank" class="btn-main btn-red" style="background-color: var(--whatsapp-color); color: #000; padding: 1.1rem 3rem;">
+                    Submit On WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h4>addimprez</h4>
+        <p class="tagline">Turnkey Solutions for High-Impact Visual Identities</p>
+        <div class="footer-line">
+            <p>&copy; 2026 <span>addimprez</span>. Precision Studio Fabrication India. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Interaction
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle Script for Mobile Three-Dot Option Menu
+        const threeDotBtn = document.getElementById('threeDotBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        threeDotBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdownMenu.contains(e.target) && e.target !== threeDotBtn) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Close menu when a link inside it is clicked
+        dropdownMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                dropdownMenu.classList.remove('active');
+            });
+        });
+
+        // Interactive Portfolio Filter Tab Script
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.cap-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active styling from previous button and apply to clicked one
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const selectedFilter = button.getAttribute('data-filter');
+
+                // Filter logic
+                galleryCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (selectedFilter === 'all' || cardCategory === selectedFilter) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
